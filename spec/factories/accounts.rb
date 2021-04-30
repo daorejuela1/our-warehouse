@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :account do
-    user { "" }
-    name { "MyString" }
+    user { create(:user) }
+    sequence(:name) { |n| "Company-#{n}"}
   end
 end
