@@ -33,7 +33,11 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
+  config.include FactoryBot::Syntax::Methods
+  # or
+  config.before { allow(Truemail).to receive(:valid?).and_return(true) }
+  # or
+  config.before { allow(Truemail).to receive(:validate).and_return(true) }
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
