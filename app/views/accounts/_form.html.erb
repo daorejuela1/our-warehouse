@@ -1,0 +1,9 @@
+<h1> Edit Account </h1>
+<%= form_with url: url, model: account, method: :patch do |form| %>
+ <%= render partial: "shared/errors", locals: {model: account} %>
+  <div class="field">
+    <%= form.label :name %><br />
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <%= form.submit "Update", class: "btn btn-success mt-3" %>
+<% end %>

@@ -28,8 +28,10 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+# Verifies Users E-mails
 gem 'truemail'
+# Multi-tenancy GEM
+gem 'acts_as_tenant'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
