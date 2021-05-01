@@ -11,10 +11,24 @@ class User < ApplicationRecord
   validate :validate_email_layers
   has_one :account, inverse_of: :user
   accepts_nested_attributes_for :account
+  has_many :teams
+  has_many :accounts, through: :teams
 
   before_validation :set_account
 
+  def is_admin?
+    ActsAsTenant.current_tenant == account.id
+  end
+
   private
+
+  def join_team(account)
+    teams.create(account_id: account.id)
+  end
+
+  def quit_team
+    teams.find_by(account_id: account.id).destroy
+  end
 
   def set_account
     self.build_account(name: name)
