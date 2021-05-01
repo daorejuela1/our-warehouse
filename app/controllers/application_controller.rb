@@ -1,13 +1,15 @@
 class ApplicationController < ActionController::Base
   set_current_tenant_through_filter
-  prepend_before_action :set_current_account
+  before_action :set_current_account
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name] )
+    devise_parameter_sanitizer.permit(:invite, keys: [:account_id] )
   end
 
   private

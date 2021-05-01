@@ -17,6 +17,11 @@
           </li>
           <li>
             <p>
+            <%= link_to("Invite User", new_user_invitation_path, class: "navbar-brand btn btn-outline-danger")%>
+            </p>
+          </li>
+          <li>
+            <p>
             <%= display_tenants_helper(current_user) %>
             </p>
           </li>

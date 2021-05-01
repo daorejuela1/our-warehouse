@@ -25,7 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # User authentication Views with style
 gem 'devise-bootstrap-views', '~> 1.0'
-
+# Adds invitations to devise logic
+gem 'devise_invitable', '~> 2.0.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # Verifies Users E-mails
