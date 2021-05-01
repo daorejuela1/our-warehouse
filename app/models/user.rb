@@ -17,12 +17,12 @@ class User < ApplicationRecord
   before_validation :set_account
 
   def is_admin?
-    ActsAsTenant.current_tenant == account.id
+    ActsAsTenant.current_tenant.id == account.id unless account.nil?
   end
 
   def tenant_list
     account_list = []
-    account_list.append(self.account.name + " (Admin)") unless self.account.nil?
+    account_list.append(self.account.name) unless self.account.nil?
     account_list.append(self.teams.uniq.pluck(:account_id).map {|x| Account.find(x).name}) unless self.teams.empty?
     account_list
   end
@@ -33,8 +33,8 @@ class User < ApplicationRecord
     teams.create!(account_id: account_id)
   end
 
-  def quit_team
-    teams.find_by(account_id: account.id).destroy
+  def quit_team(account_id)
+    teams.find_by(account_id: account_id).destroy
   end
 
   def set_account
