@@ -6,6 +6,7 @@ class CustomDeviseMailer < Devise::Mailer
 
   def invitation_instructions(record, token, opts={})
     opts[:subject] = "#{Account.find(record.account_id).name} has invited you to their Team!"
-    super
+    @token = token
+    devise_mail(record, record.invitation_instructions || :invitation_instructions, opts)
   end
 end

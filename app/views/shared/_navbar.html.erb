@@ -15,35 +15,10 @@
             Hi, <%= link_to("@"+current_user.email, edit_user_registration_path)%>
             </p>
           </li>
-          <li>
-            <li>
-              <p>
-              <%= get_current_account_name %>
-              </p>
-            </li>
-            <p>
-            <%= link_to("Invite User", new_user_invitation_path, class: "navbar-brand btn btn-outline-danger")%>
-            </p>
-          </li>
-          <li>
-            <p>
-            <%= display_tenants_helper(current_user) %>
-            </p>
-          </li>
-          <li>
-            <p>
-            <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "navbar-brand btn btn-outline-danger") %>
-            </p>
-          </li>
+          <%= render "shared/account_owner" if current_user.is_admin?%>
+          <%= render "shared/common_user" %>
         <% else %>
-          <li>
-            <p>
-            <%= link_to('Sign in', new_user_session_path, class: "navbar-brand btn btn-outline-primary") %></p></li>
-          <li>
-            <p>
-            <%= link_to('Sign up', new_user_registration_path, class: "navbar-brand btn btn-outline-success") %>
-            </p>
-          </li>
+          <%= render "shared/unsignup" %>
         <% end %>
       </ul>
     </div>
