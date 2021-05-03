@@ -24,6 +24,12 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
+    it 'it downcase the email when saved' do
+      user.email = "daOreJuela1@outlook.com"
+      user.save
+      expect(user.email).to eq(user.email.downcase)
+    end
+
     it 'saves correctly' do
       expect(user).to be_valid
       new_user = build(:user, email: "daorejuela1@outlook.com")

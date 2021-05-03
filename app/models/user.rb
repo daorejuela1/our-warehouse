@@ -19,7 +19,7 @@ class User < ApplicationRecord
   before_validation :set_account
 
   def is_admin?
-    ActsAsTenant.current_tenant.id == account.id unless account.nil?
+    ActsAsTenant.current_tenant.id == account.id unless account.nil? || ActsAsTenant.current_tenant.nil?
   end
 
   def tenant_list
@@ -39,8 +39,8 @@ class User < ApplicationRecord
     end
   end
 
-  def join_team(account_id)
-    new_team = teams.create!(account_id: account_id)
+  def join_team!(account_id)
+    teams.create!(account_id: account_id)
   end
 
   def quit_team(account_id)
@@ -54,8 +54,7 @@ class User < ApplicationRecord
   private
 
   def set_account
-    self.build_account(name: name) if self.account_id.nil?
-    self.join_team(self.account_id) unless self.account_id.nil?
+    self.build_account(name: name) if id.nil?
   end
 
   def validate_email_layers
