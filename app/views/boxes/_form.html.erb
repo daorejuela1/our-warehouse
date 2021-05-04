@@ -1,0 +1,11 @@
+<%= form_with url: url, model: box do |form| %>
+  <%= render partial: "/shared/errors", locals: {model: box} %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Old stuff box" %>
+    <small id="Box name" class="form-text text-muted">Your awersome box name</small>
+  </div>
+  <%= form.submit "Save", class: "btn btn-success btn-lg btn-block" %>
+
+<% end %>

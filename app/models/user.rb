@@ -13,6 +13,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :account
   has_many :teams, dependent: :destroy
   has_many :accounts, through: :teams
+  has_many :boxes
 
   attr_accessor :account_name
   attr_accessor :invitation_instructions
