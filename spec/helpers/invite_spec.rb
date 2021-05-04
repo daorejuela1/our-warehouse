@@ -3,7 +3,7 @@ include InviteHelper
 
 RSpec.describe InviteHelper, type: :helper do
   describe "#Validation get_team_name" do
-    let (:user) {create(:user, name: "Company-1")}
+    let (:user) {create(:user, account_name: "Company-1")}
     
     it 'returns account if id is not valid' do
       account_id = user.account.id

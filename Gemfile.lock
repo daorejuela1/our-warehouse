@@ -71,7 +71,7 @@ GEM
     byebug (11.1.3)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
-    devise (4.7.3)
+    devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -82,6 +82,10 @@ GEM
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diff-lcs (1.4.4)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -112,6 +116,8 @@ GEM
     nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pay (2.6.10)
+      rails (>= 4.2)
     pg (1.2.3)
     puma (5.2.2)
       nio4r (~> 2.0)
@@ -196,9 +202,13 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stripe (5.32.1)
+    stripe_event (2.3.1)
+      activesupport (>= 3.1)
+      stripe (>= 2.8, < 6)
     thor (1.1.0)
     tilt (2.0.10)
-    truemail (2.3.1)
+    truemail (2.4.0)
       simpleidn (~> 0.2.1)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -235,9 +245,11 @@ DEPENDENCIES
   devise
   devise-bootstrap-views (~> 1.0)
   devise_invitable (~> 2.0.0)
+  dotenv-rails
   factory_bot_rails
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  pay
   pg (~> 1.1)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
@@ -245,6 +257,8 @@ DEPENDENCIES
   rspec-rails (~> 5.0.0)
   sass-rails (>= 6)
   spring
+  stripe (>= 2.8, < 6.0)
+  stripe_event
   truemail
   turbolinks (~> 5)
   tzinfo-data

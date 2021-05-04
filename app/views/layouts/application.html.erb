@@ -6,11 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://js.stripe.com/v3/"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag asset_path('Logo.png') %>
+    <%= tag.meta name: "stripe-key", content: Pay::Stripe.public_key %>
   </head>
   <body>
-  <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/navbar" %>
     <% if alert.present? %>
       <div class="alert alert-warning" role="alert">
         <p><%= alert %> </p>

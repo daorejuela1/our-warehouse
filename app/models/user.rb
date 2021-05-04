@@ -9,12 +9,14 @@ class User < ApplicationRecord
   validates :name, format: {with: VALID_NAME_REGEX, message: "Invalid name format, only the special character '-' & '  ' are accepted"}, presence: true
   validates :email, format: {with: VALID_EMAIL_REGEX, message: "Invalid email format"}, presence: true, uniqueness: {case_sensitive: false}
   validate :validate_email_layers
-  has_one :account, inverse_of: :user
+  has_one :account, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :account
   has_many :teams, dependent: :destroy
   has_many :accounts, through: :teams
 
+  attr_accessor :account_name
   attr_accessor :invitation_instructions
+  attr_accessor :plan
 
   before_validation :set_account
 
@@ -54,7 +56,7 @@ class User < ApplicationRecord
   private
 
   def set_account
-    self.build_account(name: name) if id.nil?
+    self.build_account(name: account_name) if id.nil?
   end
 
   def validate_email_layers

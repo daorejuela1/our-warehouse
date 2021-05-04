@@ -35,12 +35,17 @@ gem 'truemail'
 gem 'acts_as_tenant'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
+#Payment logic with Stripe
+gem 'pay'
+# To use Stripe, also include:
+gem 'stripe', '< 6.0', '>= 2.8'
+gem 'stripe_event'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
   gem 'factory_bot_rails'
+  gem 'dotenv-rails'
 end
 
 group :development do
