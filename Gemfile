@@ -40,6 +40,8 @@ gem 'pay'
 # To use Stripe, also include:
 gem 'stripe', '< 6.0', '>= 2.8'
 gem 'stripe_event'
+# Testing stripe methods
+gem 'stripe-ruby-mock', '~> 3.0.1', :require => 'stripe_mock'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
