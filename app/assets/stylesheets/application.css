@@ -14,3 +14,28 @@
  *= require_tree .
  *= require_self
  */
+
+body { padding-bottom: 70px; }
+.navbar {
+	height: 70px;
+}
+#plus_sign {
+	display: inline;
+	font-size: 30px;
+}
+#navbarSupportedContent {
+	padding-top: 20px;
+}
+
+footer {
+	margin-top: 100px;
+	text-align: center;
+	color: white;
+	background-color: black;
+}
+.grid-container{
+	padding-top: 20px;
+	text-align: center;
+	justify-content: space-between;
+	align-items: center;
+}

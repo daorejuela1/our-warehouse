@@ -7,6 +7,7 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
+    @pagy, @items = pagy(@box.items)
   end
 
   def new
