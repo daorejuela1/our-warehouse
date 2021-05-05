@@ -8,9 +8,9 @@ class Item < ApplicationRecord
   validate :correct_file_mime_type
 
   def correct_file_mime_type
-    if picture.attached? && !picture.image?
+    if !picture.attached? || (picture.attached? && !picture.image?)
       picture.purge if picture.persisted?
-      errors.add(:avatar, 'Image must be a JPG or PNG file')
+      errors.add(:picture, 'Image must be a JPG or PNG file')
     end
   end
 end
