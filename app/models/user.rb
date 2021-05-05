@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :accounts, through: :teams
   has_many :boxes
 
+  has_many :items
   attr_accessor :account_name
   attr_accessor :invitation_instructions
   attr_accessor :plan
@@ -35,15 +36,19 @@ class User < ApplicationRecord
 
   def block_from_invitation?
     # If the user has not been confirmed yet, we let the usual controls work
-    if invitation_accepted_at.blank?
+    if account.nil? && invitation_accepted_at.blank?
       return invited_to_sign_up?
-    else # if the user was confirmed
+    else # if the user was confirmed, he can sign up
       return false
     end
   end
 
   def join_team!(account_id)
     teams.create!(account_id: account_id)
+  end
+
+  def use_item!(item_id)
+    items.create!(item_id: item_id)
   end
 
   def quit_team(account_id)

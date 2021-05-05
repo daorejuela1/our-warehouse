@@ -6,16 +6,15 @@ class Users::InvitationsController < Devise::InvitationsController
   # POST /resource/invitation
   def create
     @user = User.find_by(email: invite_params[:email])
-    # @user is an instance or nil
+    # @user is a already in the expected tenant
     if @user && @user.is_in_team?(current_user.account.id)
       redirect_to request.referer, alert: "This user is already in your team"
       return
     end
     self.resource = invite_resource
     resource_invited = resource.errors.empty?
-
+    # @user needs to be invited
     yield resource if block_given?
-
     if resource_invited
       if is_flashing_format? && self.resource.invitation_sent_at
         set_flash_message :notice, :send_instructions, email: self.resource.email
@@ -37,6 +36,7 @@ class Users::InvitationsController < Devise::InvitationsController
     update_name = params[:user].include? (:name)
     invitation_accepted = resource.errors.empty?
     yield resource if block_given?
+    # If the user already exist delete the invitation token
     if !update_name
       user = User.find(resource.id)
       user.invitation_token = nil
@@ -52,6 +52,7 @@ class Users::InvitationsController < Devise::InvitationsController
         set_flash_message :notice, flash_message if is_flashing_format?
         resource.after_database_authentication
         resource.join_team!(resource.account_id)
+        resource.save
         sign_in(resource_name, resource)
         respond_with resource, location: after_accept_path_for(resource)
       else
