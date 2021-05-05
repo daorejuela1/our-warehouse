@@ -6,10 +6,12 @@ class BoxesController < ApplicationController
   end
 
   def show
+    @box = Box.find(params[:id])
   end
 
   def new
     @box = ActsAsTenant.current_tenant.boxes.new
+    @box.items.build
   end
 
   def create
@@ -26,6 +28,6 @@ class BoxesController < ApplicationController
   private
 
   def box_params
-    params.require(:box).permit(:name)
+    params.require(:box).permit(:name, items_attributes: %i[id description picture _destroy])
   end
 end

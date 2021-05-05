@@ -4,8 +4,25 @@
   <div class="form-group">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control", placeholder: "Old stuff box" %>
-    <small id="Box name" class="form-text text-muted">Your awersome box name</small>
+    <small id="Box name" class="form-text text-muted">Your awesome box name</small>
   </div>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th></th>
+        <th class="display-4">Add Item</th>
+      </tr>
+      <tbody class="fields">
+        <%= form.fields_for :items do |builder|%>
+          <%= render partial: "item_fields", locals: {builder: builder} %>
+        <% end %>
+      </tbody>
+  </table>
+  <table class='table'>
+    <tbody>
+      <%= link_to_add_fields "Add Item", form, :items, class: "btn-primary btn add_new_field" %> 
+    </tbody>
+  </table>
   <%= form.submit "Save", class: "btn btn-success btn-lg btn-block" %>
 
 <% end %>

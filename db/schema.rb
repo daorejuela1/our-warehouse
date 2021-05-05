@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_220913) do
+ActiveRecord::Schema.define(version: 2021_05_05_011320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(version: 2021_05_04_220913) do
     t.bigint "user_id", null: false
     t.index ["account_id"], name: "index_boxes_on_account_id"
     t.index ["user_id"], name: "index_boxes_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "box_id", null: false
+    t.string "description"
+    t.boolean "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["box_id"], name: "index_items_on_box_id"
   end
 
   create_table "pay_charges", id: :serial, force: :cascade do |t|
@@ -142,6 +151,7 @@ ActiveRecord::Schema.define(version: 2021_05_04_220913) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boxes", "accounts"
   add_foreign_key "boxes", "users"
+  add_foreign_key "items", "boxes"
   add_foreign_key "teams", "accounts"
   add_foreign_key "teams", "users"
 end

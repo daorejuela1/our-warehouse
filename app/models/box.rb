@@ -3,6 +3,8 @@ class Box < ApplicationRecord
   belongs_to :account
   belongs_to :user
   has_one_attached :qr_code, dependent: :destroy
+  has_many :items, dependent: :destroy
+  accepts_nested_attributes_for :items, reject_if: proc { |attributes| attributes['description'].blank? }, allow_destroy: true
   validates :name, presence: true, uniqueness: {scope: :account, case_sensitive: false}
   validate :boxes_limit
 

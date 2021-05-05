@@ -4,7 +4,7 @@
     <div class="card-body text-info ">
       <h5 class="card-title"><%= link_to "Enter Box", box_path(box)%></h5>
       <%= image_tag box.qr_code %>
-      <h5 class="card-title">Items: 0</h5>
+      <h5 class="card-title"> <%= pluralize(box.items.count, "Item") %></h5>
     </div>
     <div class="card-footer bg-transparent border-info">Created: <%= time_ago_in_words(box.created_at) %> ago by <%= box.user.email %> </div>
   </div>
