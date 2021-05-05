@@ -3,7 +3,7 @@
   <%= render partial: "/shared/errors", locals: {model: @item} %>
   <div class="field">
     <%= form.label :box %>
-    <%= form.select :box, get_available_boxes(@item) %>
+    <%= form.select :box, get_available_boxes(@item), :include_blank => true %>
   </div>
   <div class="field">
   <%= form.submit "Move", class: "btn btn-success btn-lg btn-block m-3" %>

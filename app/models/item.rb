@@ -5,9 +5,11 @@ class Item < ApplicationRecord
 
   VALID_DESCRIPTION_REGEX = /\A[a-zA-Z0-9\-\s]+\z/
   validates :description, format: {with: VALID_DESCRIPTION_REGEX, message: "Invalid name format, only the special character '-' & '  ' are accepted"}, presence: true
+  validates :box, presence: true
 
   validate :correct_file_mime_type
   validates :user, uniqueness: {scope: :users}
+
 
   private
 

@@ -1,5 +1,6 @@
 require 'rqrcode'
 class Box < ApplicationRecord
+  acts_as_tenant(:account)
   belongs_to :account
   belongs_to :user
   has_one_attached :qr_code, dependent: :destroy
