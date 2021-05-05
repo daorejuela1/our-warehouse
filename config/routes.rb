@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :accounts, only: [:edit, :update]
   resources :boxes, only: [:index, :new, :create, :show] do
-    resources :items, only: [:new, :create]
+    resources :items, only: [:new, :create, :destroy]
   end
   scope :item do
     resources :moves, only: [:edit, :update]

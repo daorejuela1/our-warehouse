@@ -15,6 +15,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    box = Box.find(params[:box_id])
+    @item = Item.find(params[:id])
+    redirect_to box_path(box), notice: 'Deleted succesfully' if @item.destroy
 
   end
 

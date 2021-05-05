@@ -1,5 +1,6 @@
 class BoxesController < ApplicationController
   set_current_tenant_through_filter
+  before_action :authenticate_user!
   before_action :set_tenant, only: :show
 
   include Pagy::Backend
@@ -40,8 +41,10 @@ class BoxesController < ApplicationController
       @box = Box.find(params[:id])
     end
     if current_user.tenant_list.include? (@box.account.name)
-      current_user.update!(selected_tenant: @box.account.name)
-      set_current_tenant(@box.account)
+      if ActsAsTenant.current_tenant != @box.account
+        current_user.update!(selected_tenant: @box.account.name)
+        set_current_tenant(@box.account)
+      end
     else
       redirect_to root_path, alert: 'You are not part of that team'
     end
