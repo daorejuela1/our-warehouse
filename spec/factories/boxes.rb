@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :box do
-    user { nil }
+    account { nil }
     name { "MyString" }
   end
 end

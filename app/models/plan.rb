@@ -1,8 +1,8 @@
 class Plan
   PLANS = {
-    free: "price_1In8DjJJ94VEgqjcTjtpdlDt",
-    moderate: "price_1In8mYJJ94VEgqjcKjR6pjp3",
-    unlimited: "price_1In9GyJJ94VEgqjcf2KUPwfP"
+    free: ENV['STRIPE_FREE_PLAN'],
+    moderate: ENV['STRIPE_MODERATE_PLAN'],
+    unlimited: ENV['STRIPE_UNLIMITED_PLAN'],
   }
   
   def self.options

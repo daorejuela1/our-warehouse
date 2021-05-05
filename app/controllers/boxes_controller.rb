@@ -9,12 +9,14 @@ class BoxesController < ApplicationController
   end
 
   def new
-    @box = current_user.boxes.new
+    @box = ActsAsTenant.current_tenant.boxes.new
   end
 
   def create
-    @box = current_user.boxes.new(box_params)
+    @box = ActsAsTenant.current_tenant.boxes.new(box_params)
+    @box.user = current_user
     if @box.save
+      @box.add_qr_code(request.base_url + box_path(@box))
       redirect_to root_path, notice: 'Succesfully created box'
     else
       render :new
