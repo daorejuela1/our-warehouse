@@ -7,6 +7,6 @@ module UsesHelper
   end
 
   def return_item_form(item)
-    link_to "Return", use_path(item), class: "form-inline btn btn-danger mx-2", method: :delete
+    link_to "Return", use_path(item), class: "form-inline btn btn-secondary mx-2", method: :delete
   end
 end

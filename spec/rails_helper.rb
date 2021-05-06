@@ -36,6 +36,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # config.include Devise::TestHelpers, type: :controller
   # config.include Devise::TestHelpers, type: :view
+  config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::IntegrationHelpers
   # or
   config.before { allow(Truemail).to receive(:valid?).and_return(true) }

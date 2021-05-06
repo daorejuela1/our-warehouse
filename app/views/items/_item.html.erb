@@ -2,6 +2,7 @@
   <div class="card m-3 border-info" style="width: 18rem; height: 400px;">
     <div class="card-header bg-transparent border-info">
       <%= item.description %>
+      <%= "(In use by: #{item.user.email})" unless item.user.nil? %>
     </div>
     <div class="card-body text-info">
       <%= image_tag item.picture.variant(resize_to_limit: [200, 200]).processed %>

@@ -7,7 +7,7 @@ class UsesController < ApplicationController
       return
     end
     current_user.items.append(@item)
-    if @current_user.save
+    if @item.touch #Updates time stamp
       redirect_to @item.box, notice: "Take care of your new item"
     end
   end
@@ -19,7 +19,7 @@ class UsesController < ApplicationController
       return
     end
     current_user.items.delete(@item)
-    if @current_user.save
+    if @item.touch #Updates time stamp
       redirect_to @item.box, notice: "Thanks for returning the item"
     end
   end
