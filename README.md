@@ -93,7 +93,7 @@ Rubocop ☞ [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop
 
 ![Rails6](res/ruby-on-rails-6.jpg)
 
-Contact Importer was created using Ruby on Rails, additionals gems used to simplify the logic were used: 
+Our Warehouse was created using Ruby on Rails, additionals gems used to simplify the logic were used: 
 
  
 | Gem  | Utility |
@@ -101,9 +101,11 @@ Contact Importer was created using Ruby on Rails, additionals gems used to simpl
 |  Devise                                       | Simplifies user session logic |
 |  Devise Invitable| Allows devise to create users by sending emails |
 |  pagy | Simplifies loading objects into the view with a pagination logic |
- |  Pay| Makes it easy to connect payment methods with models |
- |  Stripe - Stripe event| To simplify the use of the Stripe API |
- |  Dotenv| Handles env variables by placing them in a `.env` file| 
+|  Pay| Makes it easy to connect payment methods with models |
+|  Stripe - Stripe event| To simplify the use of the Stripe API |
+|  Dotenv| Handles env variables by placing them in a `.env` file|
+|  Rqrcode| Easily generate QR codes with the information you need | 
+|  Truemail| To confirm that the email makes sense before sending information | 
 ## Requirements 📚
 
 - Ubuntu 18.04+
@@ -120,10 +122,10 @@ Contact Importer was created using Ruby on Rails, additionals gems used to simpl
 Please make sure that you have installed the essentials and rails 6+ before cloning:
 
 ```
-sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel redis-server
+sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
 ```
 
-Set your products in the stripe dashboard & extract their product keys into the STRIPE_FREE_PLAN, STRIPE_MODERATE_PLAN, STRIPE_UNLIMITED_PLAN respectecly in the [stripe product dashboard](https://dashboard.stripe.com/test/products). 
+Set your products in the stripe dashboard & extract their product keys (price_*) into the STRIPE_FREE_PLAN, STRIPE_MODERATE_PLAN, STRIPE_UNLIMITED_PLAN respectecly in the [stripe product dashboard](https://dashboard.stripe.com/test/products). 
 
 ![Stripe products](res/stripe-products-1.JPG)
 
