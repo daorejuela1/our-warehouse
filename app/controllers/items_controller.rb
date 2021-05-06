@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     box = Box.find(params[:box_id])
     @items = box.items.build
@@ -16,7 +18,7 @@ class ItemsController < ApplicationController
 
   def destroy
     box = Box.find(params[:box_id])
-    @item = Item.find(params[:id])
+    @item = box.items.find(params[:id])
     redirect_to box_path(box), notice: 'Deleted succesfully' if @item.destroy
 
   end

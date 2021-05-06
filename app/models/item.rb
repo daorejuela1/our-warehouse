@@ -8,7 +8,6 @@ class Item < ApplicationRecord
   validates :box, presence: true
 
   validate :correct_file_mime_type
-  validates :user, uniqueness: {scope: :users}
 
 
   private

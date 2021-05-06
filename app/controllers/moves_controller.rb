@@ -24,11 +24,13 @@ class MovesController < ApplicationController
   def set_tenant_item
     ActsAsTenant.without_tenant do
       @item = Item.find(params[:id])
+      @account_name = @item.box.account.name
+      @account = @item.box.account
     end
-    if current_user.tenant_list.include? (@item.box.account.name)
-      if ActsAsTenant.current_tenant != @item.box.account
-        current_user.update!(selected_tenant: @item.box.account.name)
-        set_current_tenant(@item.box.account)
+    if current_user.tenant_list.include? (@account_name)
+      if ActsAsTenant.current_tenant != @account
+        current_user.update!(selected_tenant: @account_name)
+        set_current_tenant(@account)
       end
     else
       redirect_to root_path, alert: 'You are not part of that team'

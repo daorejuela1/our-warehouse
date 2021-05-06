@@ -1,4 +1,5 @@
 class UsesController < ApplicationController
+  before_action :authenticate_user!
   def create
     @item = Item.find(params[:item_id])
     unless @item.user.nil?

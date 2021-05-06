@@ -33,7 +33,7 @@ class BoxesController < ApplicationController
   private
 
   def box_params
-    params.require(:box).permit(:name, items_attributes: %i[id description picture _destroy])
+    params.require(:box).permit(:name, items_attributes: %i[id description picture _destroy box_id])
   end
 
   def set_tenant
