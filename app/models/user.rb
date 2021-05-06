@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :accounts, through: :teams
   has_many :boxes
 
-  has_many :items
+  has_many :items, dependent: :nullify
   attr_accessor :account_name
   attr_accessor :invitation_instructions
   attr_accessor :plan
