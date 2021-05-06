@@ -154,7 +154,8 @@ This software uses the dotenv gem so you can create a .env file in the app to sh
 3. Install gems in requirements `bundle`
 4. Create the data base `rails db:create`
 5. Run the migrations `rails db:migrate`
-6. Start the stripe webhook  `stripe listen --forward-to localhost:3000/pay/webhooks/stripe`
+6. Install bootstrap `yarn add bootstrap@4.3.1 jquery popper.js`
+7. Start the stripe webhook  `stripe listen --forward-to localhost:3000/pay/webhooks/stripe`
 8. Run the server: `rails s -b 0.0.0.0 -p 3000`
 
 ## Usage 💪
