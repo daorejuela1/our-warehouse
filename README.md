@@ -2,7 +2,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity) [](http://lbesson.bitbucket.org/) [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/) [![Awesome Badges](https://img.shields.io/badge/badges-awesome-green.svg)](https://github.com/Naereen/badges)  [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/Naereen/)
 
 <p align="center">
-  <img width="60%" src="res/Logo.png">
+  <img width="60%" src="res/Brand.png">
 </p>
 
 #  Our Warehouse
@@ -62,6 +62,14 @@ Rubocop ☞ [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop
 ## Change your billing information
 <p style="font-size:25px; font-weight:bold">
 <img style="display: inline-block;" src="/res/billing.gif">
+</p>
+
+--------------
+
+## Invite users to your team
+
+<p style="font-size:25px; font-weight:bold">
+<img style="display: inline-block;" src="/res/invite-user.gif">
 </p>
 
 --------------
