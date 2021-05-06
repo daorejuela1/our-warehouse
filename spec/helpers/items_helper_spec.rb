@@ -11,5 +11,12 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ItemsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Validates values" do
+    let(:item) {create(:item)}
+
+    it 'Returns null if there are not available boxes' do
+      boxes = helper.get_available_boxes(nil)
+      expect(boxes).to eq([])
+    end
+  end
 end

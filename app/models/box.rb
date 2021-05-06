@@ -11,8 +11,8 @@ class Box < ApplicationRecord
 
   def boxes_limit
     active_subscription = ActsAsTenant.current_tenant.subscriptions.find { |dict| dict['status'] == 'active' }
-    if self.new_record? && (ActsAsTenant.current_tenant.boxes.count > 0) && (!active_subscription &&  active_subscription.name == 'Free')
-      errors.add(:base, "Free plans cannot have more than one boxes")
+    if self.new_record? && (ActsAsTenant.current_tenant.boxes.count > 0) && (active_subscription.nil? ||  active_subscription.name == 'Free')
+      errors.add(:base, "Free plans cannot have more than one box")
     elsif self.new_record? && (ActsAsTenant.current_tenant.boxes.count > 4) && (active_subscription && active_subscription.name == 'Moderate')
       errors.add(:base, "Moderate plans cannot have more than five boxes")
     end
