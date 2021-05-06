@@ -1,0 +1,6 @@
+<h1 class="display-5 text-center"> <%= "#{ActsAsTenant.current_tenant.name} #{"Box".pluralize(Box.count)}" %> </h1>
+<%= pagy_bootstrap_nav(@pagy).html_safe %>
+<div class="row row-cols-1 row-cols-md-2 g-4" >
+  <%= render @boxes %>
+</div>
+<%= pagy_bootstrap_nav(@pagy).html_safe %>

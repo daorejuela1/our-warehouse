@@ -8,6 +8,8 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "bootstrap"
+import "stripe/application"
+import "forms/nested_formlogic"
 
 Rails.start()
 Turbolinks.start()

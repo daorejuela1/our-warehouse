@@ -21,18 +21,38 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+# User authentication
+gem 'devise'
+# User authentication Views with style
+gem 'devise-bootstrap-views', '~> 1.0'
+# Adds invitations to devise logic
+gem 'devise_invitable', '~> 2.0.0'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-
+gem 'image_processing', '~> 1.2'
+# Verifies Users E-mails
+gem 'truemail'
+# Multi-tenancy GEM
+gem 'acts_as_tenant'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+#Payment logic with Stripe
+gem 'pay'
+# To use Stripe, also include:
+gem 'stripe', '< 6.0', '>= 2.8'
+gem 'stripe_event'
+# Testing stripe methods
+gem 'stripe-ruby-mock', '~> 3.0.1', :require => 'stripe_mock'
+# Pagination gem
+gem 'pagy'
+# QR code
+gem 'rqrcode'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
   gem 'factory_bot_rails'
+  gem 'dotenv-rails'
 end
 
 group :development do

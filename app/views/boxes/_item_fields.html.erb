@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <%= builder.hidden_field :_destroy %>
+    <%= link_to 'Delete', '#', class: 'remove_record btn btn-danger' %>
+  </td>
+  <td>
+  <%= builder.label :item %>
+  <%= builder.text_field :description, class: "form-control", placeholder: "Red Hammer" %>
+  <%= builder.file_field :picture, class: "form-control" %>
+  </td>
+</tr>

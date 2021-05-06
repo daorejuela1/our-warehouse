@@ -1,0 +1,12 @@
+<li class="navbar-text font-weight-normal mr-3">
+  <%= get_current_plan %>
+</li>
+<li class="navbar-text font-weight-bold mr-3">
+  <%= get_current_account_name %>
+</li>
+<li class="form-inline mr-3">
+  <%= display_tenants_helper(current_user) %>
+</li>
+<li>
+  <%= link_to("Sign out", destroy_user_session_path, method: :delete, class: "form-inline btn btn-outline-danger") %>
+</li>

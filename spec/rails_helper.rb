@@ -33,12 +33,25 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
+  config.include FactoryBot::Syntax::Methods
+  # config.include Devise::TestHelpers, type: :controller
+  # config.include Devise::TestHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers
+  # or
+  config.before { allow(Truemail).to receive(:valid?).and_return(true) }
+  # or
+  config.before { allow(Truemail).to receive(:validate).and_return(true) }
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  config.before(:each) do
+    @stripe_test_helper = StripeMock.create_test_helper
+    StripeMock.start
+  end
+  config.after(:each) do
+    StripeMock.stop
+  end
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 

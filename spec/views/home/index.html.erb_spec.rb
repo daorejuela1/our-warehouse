@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "home/index.html.erb", type: :view do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'displays plans details correctly' do
+    render
+    assert_select 'h5', text: 'Free'
+    assert_select 'h6', text: '$0/month'
+  end
 end

@@ -1,0 +1,19 @@
+<div class="col text-center">
+  <div class="card m-3 border-info" style="width: 18rem; height: 400px;">
+    <div class="card-header bg-transparent border-info">
+      <%= item.description %>
+    </div>
+    <div class="card-body text-info">
+      <%= image_tag item.picture.variant(resize_to_limit: [200, 200]).processed %>
+    </div>
+    <div class="card-footer border-info">
+      <div class="d-flex justify-content-center ">
+        <%= link_to("Move", edit_move_path(item), class: "form-inline btn btn-warning mx-2")%>
+        <%= use_item_form(item) if item.user.nil? %>
+        <%= return_item_form(item) if item.user == current_user %>
+        <%= link_to("Delete", box_item_path(id: item.id, box_id: item.box.id), method: :delete,  data: {confirm: "Are you sure?"}, class: "form-inline btn btn-danger mx-2")%>
+      </div>
+      <h6>Last activity: <%= time_ago_in_words(item.updated_at) %> ago </h6>
+    </div>
+  </div>
+</div>
