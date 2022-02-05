@@ -10,6 +10,9 @@ class Box < ApplicationRecord
   validate :boxes_limit
 
   def boxes_limit
+    # boxes_limit
+    #
+    # validates that according to a plan the number of boxes is valid
     active_subscription = ActsAsTenant.current_tenant.subscriptions.find { |dict| dict['status'] == 'active' }
     if self.new_record? && (ActsAsTenant.current_tenant.boxes.count > 0) && (active_subscription.nil? ||  active_subscription.name == 'Free')
       errors.add(:base, "Free plans cannot have more than one box")
@@ -19,6 +22,10 @@ class Box < ApplicationRecord
   end
 
   def add_qr_code(url)
+    # add_qr_code
+    #
+    # param Path url - url to transform into QR
+    # logic to store a qr code, froma an url
     if !qr_code.attached?
       qrcode = RQRCode::QRCode.new(url)
       IO.binwrite("/tmp/#{id}.png", qrcode.as_png.to_s)
